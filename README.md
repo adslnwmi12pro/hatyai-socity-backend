@@ -7,13 +7,35 @@ Backend API for KitPokeMap - Pokemon GO Map Application for Kanchanaburi, Thaila
 - Supabase (PostgreSQL Database)
 - Gunicorn (WSGI HTTP Server)
 
-## Deployment on Render.com
+## Deployment on Railway.app
+
+### Quick Deploy
+1. Go to https://railway.app/
+2. Click "Start a New Project"
+3. Select "Deploy from GitHub repo"
+4. Choose: `adslnwmi12pro/hatyai-socity-backend`
+5. Add Environment Variables (see below)
+6. Deploy!
 
 ### Environment Variables Required:
 ```
 SUPABASE_URL=https://tjxxkhdvhwmpbhwayfmk.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqeHhraGR2aHdtcGJod2F5Zm1rIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDU5OTQ3MiwiZXhwIjoyMDgwMTc1NDcyfQ.sDH9_yk1BxI4YMoEyZ6NECEsJ5q0op4PYIGQva33JJA
+PORT=5000
 ```
+
+### Railway Configuration:
+Railway will automatically detect Python and install dependencies from `requirements.txt`.
+
+The start command is configured in `railway.json`:
+```
+cd src && gunicorn main:app --bind 0.0.0.0:$PORT
+```
+
+## Alternative: Render.com Deployment
+
+### Environment Variables Required:
+Same as Railway (see above)
 
 ### Render Configuration:
 - **Build Command**: `pip install -r requirements.txt`
